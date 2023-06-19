@@ -9,9 +9,10 @@ const events = require('./routes/events');
 const neo = require('./routes/neo');
 const sun = require('./routes/sun');
 
-
+// יוצר את השרת
 const app = express();
 
+// מחבר כל מיני ספריות כדי לעזור לשרת לרוץ
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

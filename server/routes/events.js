@@ -6,8 +6,10 @@ const {Client} = require('elasticsearch');
 const client = new Client({node: 'http://localhost:5601'});
 const index = 'qopxjgol-events';
 
+// קבלת כל האירועים שקרו בשבוע האחרון
 router.get('/', async function (req, res, next) {
     try {
+        // לקיחת זמנים של היום ושל לפני שבוע
         const now = Date.now();
         const oneWeekAgo = now - (7 * 24 * 60 * 60 * 1000);
         const reply = await client.search({
@@ -32,6 +34,7 @@ router.get('/', async function (req, res, next) {
     }
 });
 
+// מסדר את האירועים בסדר יורד ולוקח את האחרון ואז שולח
 router.get('/last', async function (req, res, next) {
     try {
         const reply = await client.search({
@@ -49,13 +52,16 @@ router.get('/last', async function (req, res, next) {
     }
 });
 
+// בקשה מסוג פוסט שעושה חיפוש
+// מסוג פוסט כי יש הרבה נתונים שלא נוח להכניס אותם בבקשת get
 router.post('/search', async (req, res) => {
     try {
+        // פנייה לתוך גוף הבקשה ופירוק שלה לרכיבים
         const { notifier, time, priority, event } = req.body;
 
-        // Building the Elasticsearch query using BodyBuilder
         const query = bodybuilder();
 
+        // שאילתות על מנת לקבל נתונים לטבלה של החיפוש
         if (priority) {
             query.andQuery('match', 'priority', priority);
         }
@@ -75,12 +81,14 @@ router.post('/search', async (req, res) => {
             });
         }
 
+        // פנייה לאלסטיק-סרצ' עם כל השאילתתה שהוא בנה
         const reply = await client.search({
             index,
             size: 500,
             body: query.build(), // Get the final Elasticsearch query from BodyBuilder
         });
 
+        // מחזיר את התוצאות ללקוח
         const results = reply.hits.hits.map((hit) => hit._source);
         res.json(results);
     } catch (error) {

@@ -4,6 +4,7 @@ const router = express.Router();
 const API_KEY = 'U51cKcuEUk0EgmGLI1qeetnBK8iTu3tsLxepkOVs';
 const ALBEDO = 0.15;
 
+// פונקציה שמקבלת תאריך ומחזירה אותו בפורמט מסויים
 function formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -11,9 +12,10 @@ function formatDate(date) {
     return `${year}-${month}-${day}`;
 }
 
-// Function to calculate the estimated diameter
+// חישוב היקף של כוכב לםי עוצמת האור שלו
 const calculateDiameter = (absoluteMagnitude, albedo) => 1000 * (1329 / Math.sqrt(albedo) * Math.pow(10, -0.2 * absoluteMagnitude));
 
+// פנייה לAPI שיביא לנו את כל האירועים מהיום עד מחר
 router.get('/', async function (req, res, next) {
     try {
         const today = new Date();
@@ -27,6 +29,7 @@ router.get('/', async function (req, res, next) {
     }
 });
 
+// פנייה לAPI שיביא לנו את כל האירועים מהחודש האחרון
 router.get('/past', async function (req, res, next) {
     try {
         const today = new Date();
@@ -39,6 +42,7 @@ router.get('/past', async function (req, res, next) {
         const maxDiameter = Math.ceil(Math.max(...data));
         const offset = Math.round((maxDiameter - minDiameter) / 5);
 
+        // מחלק את הנתונים לקבוצות לפי ההיקף בשביל הגרף עוגה
         const groups = {};
         for (let i = minDiameter + offset; i < maxDiameter + offset; i += offset) {
             groups[i] = 0;

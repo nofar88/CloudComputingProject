@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const express = require('express');
 const router = express.Router();
 
+// פניה לאתר של השמש ופירוק הHTML שלו לחלקים שאנחנו צריכים
 async function fetchSunData() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -40,6 +41,7 @@ async function fetchSunData() {
 
 router.get('/', async function (req, res, next) {
     try {
+        // אחרי פירוק הנתונים שולח את הנתונים ללקוח
         const sunData = await fetchSunData();
         res.send(sunData);
     } catch (e) {
