@@ -1,0 +1,15 @@
+{
+  "name": "kafaka-connector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node kafkaConsume.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elasticsearch": "^16.7.3",
+    "kafkajs": "^2.2.4"
+  }
+}

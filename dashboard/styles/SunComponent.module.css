@@ -1,0 +1,39 @@
+.container {
+    background-color: black;
+    grid-area: 2 / 2 / 6 / 3;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.header {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.header p {
+    text-align: center;
+}
+
+.sunImage {
+    width: 60%;
+    padding-bottom: 60%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.data {
+    margin-top: 30px;
+    position: relative;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 10px;
+    color: white;
+    flex-direction: column;
+}
+
+.data span {
+    font-weight: bold;
+}

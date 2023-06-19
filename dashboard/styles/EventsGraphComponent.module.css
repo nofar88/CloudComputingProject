@@ -1,0 +1,66 @@
+.container {
+    background-color: #a6a6a6;
+    grid-area: 4 / 1 / 6 / 1;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.graph {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.barContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.bar {
+    background: repeating-linear-gradient(
+            45deg,
+            #262626,
+            #262626 5px,
+            #444444 5px,
+            #444444 10px
+    );
+    width: 45px;
+    border-radius: 15px;
+    transition: 200ms;
+}
+
+.bar:hover {
+    background: repeating-linear-gradient(
+            45deg,
+            var(--banana-color),
+            var(--banana-color) 5px,
+            #fff6e3 5px,
+            #fff6e3 10px
+    );
+}
+
+.YLabel {
+    text-align: center;
+    opacity: 0.5;
+}
+
+.XLabel {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(-180deg);
+    align-self: center;
+    margin: -20px;
+    opacity: 0.5;
+}

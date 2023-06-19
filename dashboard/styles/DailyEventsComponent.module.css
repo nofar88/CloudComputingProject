@@ -1,0 +1,29 @@
+.container {
+    background-color: var(--banana-color);
+    grid-area: 2 / 3 / 4 / 4;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.header {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.table {
+    font-size: 0.7rem;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 5px 15px;
+}
+
+.table thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--banana-color);
+}

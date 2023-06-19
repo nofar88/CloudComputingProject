@@ -1,0 +1,20 @@
+.container {
+    background-color: #4f4f4f;
+    grid-area: 4 / 3 / 6 / 4;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.container svg {
+    filter: drop-shadow(0 0 30px #171717);
+}

@@ -1,0 +1,25 @@
+{
+  "name": "cloud-computing-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "start-all": "../node_modules/.bin/concurrently \\\"node server.js\\\" \\\"cd kafka && node app.js\\\" \\\"cd universe-simulator && node index.js\\\"\\n"
+  },
+  "dependencies": {
+    "bodybuilder": "^2.5.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "elasticsearch": "^16.7.3",
+    "express": "~4.16.1",
+    "kafkajs": "^2.2.4",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.22",
+    "puppeteer": "^20.5.0",
+    "redis": "^4.6.6"
+  },
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

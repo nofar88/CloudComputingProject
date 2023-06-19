@@ -1,0 +1,115 @@
+.container {
+    grid-area: 1 / 1 / 2 / 4;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    align-items: center;
+    position: relative;
+    margin: -30px;
+    padding: 30px;
+    z-index: 5;
+    overflow-y: hidden;
+}
+
+.containerFocused {
+    backdrop-filter: blur(25px);
+    background-color: rgba(var(--background-end-rgb), 0.7);
+    grid-area: 1 / 1 / 6 / 4;
+    overflow-y: scroll;
+}
+
+.searchButton {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.closeButton {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    padding: 10px;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.closeButton {
+    cursor: pointer;
+}
+
+.searchBox {
+    color: white;
+    display: flex;
+    align-items: center;
+    z-index: 5;
+}
+
+.searchBox > input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1em;
+    color: white;
+    padding: 10px;
+}
+
+.labels {
+    grid-area: 2 / 1 / 3 / 4;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.label {
+    background-color: #fff5a3;
+    height: fit-content;
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: black;
+    margin: 0 10px;
+}
+
+.label > input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.label > input:focus {
+    border-bottom: black 2px solid;
+}
+
+.invisible {
+    display: none;
+}
+
+.tableContainer {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    margin: 20px 0;
+}
+
+.table {
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 5px 15px;
+    color: white;
+    width: 100%;
+}

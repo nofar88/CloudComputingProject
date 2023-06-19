@@ -1,0 +1,55 @@
+.container {
+    background-color: #4f4f4f;
+    grid-area: 2 / 1 / 4 / 2;
+    border-radius: 30px;
+    color: white;
+    padding: 20px;
+}
+
+.container img {
+    filter: drop-shadow(0 0 30px #171717);
+    animation: rotate 60s infinite linear;
+}
+
+.blink {
+    animation: blink 4s infinite ease-in-out;
+}
+
+.header {
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.data {
+    font-size: 0.8rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.data span {
+    font-weight: bold;
+}
+
+@keyframes blink {
+    50% {
+        box-shadow: 0 0 30px 0 rgba(213, 213, 213, 0.75);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
