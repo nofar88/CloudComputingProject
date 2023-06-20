@@ -73,6 +73,11 @@ export default function SearchComponent() {
                 <datalist id="notifier">
                     {notifyingFactor && notifyingFactor.map(notifier => <option>{notifier}</option>)}
                 </datalist>
+                {notifierInput &&
+                    <span className="material-symbols-outlined" onClick={() => setNotifierInput('')}>
+                        close
+                    </span>
+                }
             </label>
         );
     };
@@ -91,6 +96,14 @@ export default function SearchComponent() {
                 <input type="date"
                        value={timeToInput}
                        onChange={(e) => setTimeToInput(e.target.value)}/>
+                {timeToInput && timeFromInput &&
+                    <span className="material-symbols-outlined" onClick={() => {
+                        setTimeFromInput(null);
+                        setTimeToInput(null);
+                    }}>
+                        close
+                    </span>
+                }
             </label>
         );
     };
@@ -107,6 +120,11 @@ export default function SearchComponent() {
                 <datalist id="priority">
                     {[1, 2, 3, 4, 5].map(priority => <option>{priority}</option>)}
                 </datalist>
+                {priorityInput &&
+                    <span className="material-symbols-outlined" onClick={() => setPriorityInput('')}>
+                        close
+                    </span>
+                }
             </label>
         );
     };
@@ -123,6 +141,11 @@ export default function SearchComponent() {
                 <datalist id="event">
                     {eventType && eventType.map(event => <option>{event}</option>)}
                 </datalist>
+                {eventInput &&
+                    <span className="material-symbols-outlined" onClick={() => setEventInput('')}>
+                        close
+                    </span>
+                }
             </label>
         );
     };
