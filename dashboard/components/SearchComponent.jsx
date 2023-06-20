@@ -13,43 +13,21 @@ const eventType = ['GRB', 'Apparent Brightness Rise', 'UV Rise', 'X-Ray Rise', '
 
 export default function SearchComponent() {
     const [isOpen, setIsOpen] = useState(false);
-    const [textInput, setTextInput] = useState('');
-    const [cometInput, setCometInput] = useState('');
     const [notifierInput, setNotifierInput] = useState('');
     const [priorityInput, setPriorityInput] = useState('');
     const [eventInput, setEventInput] = useState('');
     const [timeFromInput, setTimeFromInput] = useState(null);
     const [timeToInput, setTimeToInput] = useState(null);
-
     const [results, setResults] = useState([]);
 
-    const fetchComets = async () => {
-        try {
-            const response = await axios.get('/api/comets');
-            setComets(response.data.map(comet => JSON.parse(comet)));
-        } catch (e) {
-            console.error(e);
-        }
-    };
-
-    useEffect(() => {
-        fetchComets();
-    }, []);
-
+    // פונקציה שאחראית לסגור את החלון של החיפוש
     const closeSearch = useCallback(() => {
         setIsOpen(false);
     }, []);
 
+
     const search = async () => {
         const searchParams = {};
-
-        if (textInput) {
-            searchParams.text = textInput;
-        }
-
-        if (cometInput) {
-            searchParams.comet = cometInput;
-        }
 
         if (notifierInput) {
             searchParams.notifier = notifierInput;
@@ -69,6 +47,7 @@ export default function SearchComponent() {
 
         try {
             if (Object.keys(searchParams).length !== 0) {
+                // שולח בקשה לשרת לחיפוש הפרמטרים ואחרי שהשרת מוצא אותם הוא שולח אותם בחזרה
                 const response = await axios.post('/api/search', searchParams);
                 setResults(response.data);
             }
@@ -79,9 +58,9 @@ export default function SearchComponent() {
 
     useEffect(() => {
         search();
-    }, [textInput, cometInput, notifierInput, timeFromInput, timeToInput, priorityInput, eventInput]);
+    }, [notifierInput, timeFromInput, timeToInput, priorityInput, eventInput]);
 
-
+    // אחראי של איפה לשים את התגית לפי הסינון
     const renderNotifier = (selected) => {
         return (
             <label className={cx(styles.label, {[styles.invisible]: selected ? !notifierInput : notifierInput})}
@@ -195,6 +174,7 @@ export default function SearchComponent() {
                             </tr>
                             </thead>
                             <tbody>
+                            {/*הצגת תוצאות החיפוש בטבלה*/}
                             {results.map(comet =>
                                 <tr>
                                     <td>{comet.starId}</td>

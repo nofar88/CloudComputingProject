@@ -3,9 +3,12 @@ import axios from 'axios';
 import styles from '../styles/LastEventsComponent.module.css';
 import Image from "next/image";
 
+const SECOND = 1000;
+
 export default function LastEventsComponent() {
     const [data, setData] = useState({});
 
+    // פניה לשרת לקבלת האירוע האחרון
     const fetchEvents = async () => {
         try {
             const response = await axios.get('/api/last-events');
@@ -15,14 +18,16 @@ export default function LastEventsComponent() {
         }
     }
 
+    // מריץ את הפונקציה שאחראית להביא את האירוע האחרון ומתמזמן שתרוץ פעם ב20 שניות
     useEffect(() => {
         fetchEvents();
-        const id = setInterval(fetchEvents, 20000);
+        const id = setInterval(fetchEvents, 20 * SECOND);
         return () => clearInterval(id);
     }, []);
 
+    // לקיחת כל הנתונים הרלוונטיים והצגתם
     return (
-        <div className={`${styles.container} ${data.priority >= 4  ? styles.blink : ''}`}>
+        <div className={`${styles.container} ${data.priority >= 4 ? styles.blink : ''}`}>
             <div className={styles.header}>
                 <h1>Last Event</h1>
                 <div>

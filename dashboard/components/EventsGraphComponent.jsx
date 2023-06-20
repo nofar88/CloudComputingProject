@@ -11,6 +11,7 @@ function processData(data) {
 export default function EventsGraphComponent() {
     const [data, setData] = useState([0, 0, 0, 0, 0]);
 
+    // פניה לשרת לקבלת האירועים בשבוע האחרון
     const fetchEvents = async () => {
         try {
             const response = await axios.get('/api/events');
@@ -20,12 +21,14 @@ export default function EventsGraphComponent() {
         }
     }
 
+    // מריץ את הפונקציה שאחראית להביא את האירועים האחרונים ומתמזמן שתרוץ פעם ב20 שניות
     useEffect(() => {
         fetchEvents();
         const id = setInterval(fetchEvents, 20000);
         return () => clearInterval(id);
     }, []);
 
+    // לקיחת כל הנתונים הרלוונטיים והצגתם
     return (
         <div className={styles.container}>
             <div className={styles.header}>
