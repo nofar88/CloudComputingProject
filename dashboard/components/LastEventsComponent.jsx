@@ -1,12 +1,30 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import axios from 'axios';
 import styles from '../styles/LastEventsComponent.module.css';
 import Image from "next/image";
+import socketio from 'socket.io-client';
 
 const SECOND = 1000;
 
 export default function LastEventsComponent() {
     const [data, setData] = useState({});
+
+    useEffect(() => {
+        // פרוטוקול WS שמפאשר לקבל עדכונים ישירות מהשרת בלי לבקש ממנו בעצמנו
+        // מתחברים לשרת של הsocket
+        const socket = socketio("http://localhost:1234", {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        });
+
+        // נרשמים לאירועים שמגיעים על הsocket
+        socket.on("event", (data) => {
+            setData(data);
+        });
+
+        return () => socket.disconnect();
+    }, []);
 
     // פניה לשרת לקבלת האירוע האחרון
     const fetchEvents = async () => {
