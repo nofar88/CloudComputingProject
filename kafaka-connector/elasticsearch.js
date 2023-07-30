@@ -13,19 +13,7 @@ async function saveDocument(data, topic) {
     }
 }
 
-async function getDocument() {
-    try {
-        return await client.search({
-           index,
-           body: {
-               query: {}
-           }
-       });
-    } catch (e) {
-        console.log(e);
-    }
-}
 
-module.exports = {saveDocument, getDocument};
+module.exports = {saveDocument};
 
 

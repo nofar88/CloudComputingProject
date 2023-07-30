@@ -16,7 +16,8 @@ const {saveDocument} = require("./elasticsearch");
         await consumer.subscribe({topic: 'qopxjgol-events'});
     }
 
-    // ברגע שנכנס מאורע חדש לתוך הטופיק הפונקציה הזאת פועלת בכך שהיא שומרת את המאורע ואז הפונקציה של השמירת מסמך דוחפת את המאורע לתוך האלקסטיק
+    // ברגע שנכנס מאורע חדש לתוך הטופיק הפונקציה הזאת פועלת בכך שהיא
+    // שומרת את המאורע ואז הפונקציה של השמירת מסמך דוחפת את המאורע לתוך האלקסטיק
     async function consume() {
         await consumer.run({
             eachMessage: async ({topic, partition, message}) => {

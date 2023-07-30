@@ -3,7 +3,7 @@ const router = express.Router();
 
 const API_KEY = 'U51cKcuEUk0EgmGLI1qeetnBK8iTu3tsLxepkOVs';
 const ALBEDO = 0.15;
-
+// גרף עוגה + טבלה
 // פונקציה שמקבלת תאריך ומחזירה אותו בפורמט מסויים
 function formatDate(date) {
     const year = date.getFullYear();
@@ -12,7 +12,7 @@ function formatDate(date) {
     return `${year}-${month}-${day}`;
 }
 
-// חישוב היקף של כוכב לםי עוצמת האור שלו
+// חישוב היקף של כוכב לפי עוצמת האור שלו
 const calculateDiameter = (absoluteMagnitude, albedo) => 1000 * (1329 / Math.sqrt(albedo) * Math.pow(10, -0.2 * absoluteMagnitude));
 
 // פנייה לAPI שיביא לנו את כל האירועים מהיום עד מחר
