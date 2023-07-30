@@ -27,3 +27,6 @@ And Kafka is on the cloud
 - From there the dashboard requests all the information needed to present it. it can actively request the information from the server or alternatively receive it directly from the univers-simulator when the priority level is higher than 4.
 
 Detailed instructions are in the projec's instructions file.
+
+## General structure diagram
+![enter image description here](https://raw.githubusercontent.com/nofar88/CloudComputingProject/master/General%20structure.png?token=GHSAT0AAAAAACFWXNJWWPYI2JMBU5ONQTVIZGGXIGA)
